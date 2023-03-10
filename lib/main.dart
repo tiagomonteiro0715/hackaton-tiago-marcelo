@@ -52,15 +52,15 @@ class _ChatGPTAnswerState extends State<ChatGPTAnswer> {
   Future<String> _generateTextFromChatGPTAPI(String gptPrompt) async {
     OpenAI.apiKey = "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";
 
-    if(gptPrompt != ' '){
-    final completion = await OpenAI.instance.completion.create(
-      model: "text-davinci-003",
-      prompt: gptPrompt,
-      maxTokens: 50,
-    );
-    return (completion.choices[0].text);
+    if (gptPrompt != ' ') {
+      final completion = await OpenAI.instance.completion.create(
+        model: "text-davinci-003",
+        prompt: gptPrompt,
+        maxTokens: 50,
+      );
+      return (completion.choices[0].text);
     }
- return ("Write your awnsers here");
+    return ("Write your awnsers here");
   }
 
   /// It takes a string as input, and returns a string as output
@@ -81,24 +81,6 @@ class _ChatGPTAnswerState extends State<ChatGPTAnswer> {
       body: Column(
         children: [
           /// Creating a text field.
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              controller: _controller,
-              decoration: const InputDecoration(
-                hintText: 'Enter your message',
-                border: OutlineInputBorder(),
-              ),
-
-              /// Setting the value of the text field to the value of the string.
-              onSubmitted: (String value) {
-                setState(() {
-                  _prompt = value;
-                });
-              },
-            ),
-          ),
-
           Expanded(
             child: FutureBuilder<String>(
               future: _generateTextFromChatGPTAPI(_prompt),
@@ -160,8 +142,26 @@ class _ChatGPTAnswerState extends State<ChatGPTAnswer> {
 
             /// Returning the data.
           ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TextField(
+              controller: _controller,
+              decoration: const InputDecoration(
+                hintText: 'Enter your message',
+                border: OutlineInputBorder(),
+              ),
+
+              /// Setting the value of the text field to the value of the string.
+              onSubmitted: (String value) {
+                setState(() {
+                  _prompt = value;
+                });
+              },
+            ),
+          ),
         ],
       ),
     );
   }
 }
+
