@@ -50,17 +50,34 @@ class _ChatGPTAnswerState extends State<ChatGPTAnswer> {
   ///   A string of text.
 
   Future<String> _generateTextFromChatGPTAPI(String gptPrompt) async {
-    OpenAI.apiKey = "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";
+    String API_KEY = "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";
+    OpenAI.apiKey = API_KEY;
 
     if (gptPrompt != ' ') {
       final completion = await OpenAI.instance.completion.create(
         model: "text-davinci-003",
-        prompt: gptPrompt,
-        maxTokens: 50,
+        prompt: """
+
+I want you to act as a doctor and come up with creative treatments for illnesses or diseases. 
+
+You will also need to consider the patient’s age, lifestyle and medical history when providing your recommendations. 
+
+Only anwer in bullet points within the categories: conventional medicines, herbal remedies and other natural alternatives. 
+
+Do not surpass 200 tokens
+
+My first suggestion request is “$gptPrompt”.
+
+""",
+        maxTokens: 10,
       );
       return (completion.choices[0].text);
     }
-    return ("Write your awnsers here");
+    return ("""
+    \nMay occasionally produce harmful or biased content due to data and language patterns used to train me
+    \nKnowledge of world events and information is limited to data and events up until 2021
+    \nFact-checking is recommended, especially for specialized or technical subjects
+    \nLimitations should be kept in mind when relying on my services for research or analysis""");
   }
 
   /// It takes a string as input, and returns a string as output
@@ -74,13 +91,17 @@ class _ChatGPTAnswerState extends State<ChatGPTAnswer> {
   Widget build(BuildContext context) {
     return Scaffold(
       /// Creating the app bar.
+      backgroundColor: Color.fromARGB(255, 45, 45, 45),
       appBar: AppBar(
         title: const Text('Chat with GPT'),
       ),
-
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           /// Creating a text field.
+          Text("DoctorAI",
+              textScaleFactor: 2, style: TextStyle(color: Colors.white)),
           Expanded(
             child: FutureBuilder<String>(
               future: _generateTextFromChatGPTAPI(_prompt),
@@ -91,10 +112,24 @@ class _ChatGPTAnswerState extends State<ChatGPTAnswer> {
                 if (snapshot.hasData) {
                   children = <Widget>[
                     Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        '${snapshot.data}',
-                        style: const TextStyle(fontSize: 24.0),
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        width: 1000,
+                        height: 350,
+                        padding: EdgeInsets.all(
+                            14.0), // add some padding to the container
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 111, 111,
+                              111), // set the background color to grey
+                          borderRadius: BorderRadius.circular(
+                              20.0), // set the border radius to 10
+                        ),
+                        child: Text(
+                          '${snapshot.data}',
+                          style: const TextStyle(
+                              fontSize: 16.0, color: Colors.white),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
                   ];
@@ -126,7 +161,7 @@ class _ChatGPTAnswerState extends State<ChatGPTAnswer> {
                       padding: EdgeInsets.all(16.0),
                       child: Text(
                         'Type a message to start chatting',
-                        style: TextStyle(fontSize: 24.0),
+                        style: TextStyle(fontSize: 20.0, color: Colors.white),
                       ),
                     ),
                   ];
@@ -142,13 +177,15 @@ class _ChatGPTAnswerState extends State<ChatGPTAnswer> {
 
             /// Returning the data.
           ),
-          Padding(
+          Container(
             padding: const EdgeInsets.all(16.0),
+            color: Colors.white,
             child: TextField(
               controller: _controller,
               decoration: const InputDecoration(
                 hintText: 'Enter your message',
                 border: OutlineInputBorder(),
+                fillColor: Colors.grey,
               ),
 
               /// Setting the value of the text field to the value of the string.
@@ -164,4 +201,3 @@ class _ChatGPTAnswerState extends State<ChatGPTAnswer> {
     );
   }
 }
-
