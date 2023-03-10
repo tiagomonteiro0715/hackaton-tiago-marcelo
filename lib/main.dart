@@ -35,6 +35,13 @@ class chatGPTAnswer extends StatefulWidget {
 }
 
 class _chatGPTAnswerState extends State<chatGPTAnswer> {
+
+  late TextEditingController _controller;
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
   /// _generateTextFromChatGPTAPI() is a function that takes in a string and returns a string. It uses the
   /// OpenAI API to generate text based on the input string._
   ///
@@ -42,13 +49,13 @@ class _chatGPTAnswerState extends State<chatGPTAnswer> {
   ///   A string of text.
   Future<String> _generateTextFromChatGPTAPI() async {
     /// It's setting the API key for the OpenAI API.
-    OpenAI.apiKey = "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";
+    OpenAI.apiKey = "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";
 
     /// It's calling the OpenAI API to generate text based on the input string.
     final completion = await OpenAI.instance.completion.create(
       model: "text-davinci-003",
       prompt: "What is the meaning of life?",
-      maxTokens: 10,
+      maxTokens: 5,
     );
 
     return (completion.choices[0].text);
@@ -62,15 +69,19 @@ class _chatGPTAnswerState extends State<chatGPTAnswer> {
       child: FutureBuilder<String>(
         future:
             _generateTextFromChatGPTAPI(), // a previously-obtained Future<String> or null
-
         builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+          /// It's checking if the snapshot has data. If it does, it's setting the children to a list of widgets.
           List<Widget> children;
           if (snapshot.hasData) {
             children = <Widget>[
+              /// It's adding padding to the text.
               Padding(
                 padding: const EdgeInsets.only(
                     top: 16, bottom: 16, left: 16, right: 16),
-                child: Text('Result: ${snapshot.data}'),
+                child: Text(
+                  'You might have: ${snapshot.data}',
+                  textScaleFactor: 0.5,
+                ),
               ),
             ];
           } else if (snapshot.hasError) {
@@ -87,12 +98,6 @@ class _chatGPTAnswerState extends State<chatGPTAnswer> {
             ];
           } else {
             children = const <Widget>[
-
-              SizedBox(
-                width: 30,
-                height: 30,
-                child: CircularProgressIndicator(),
-              ),
               Padding(
                 padding: EdgeInsets.only(top: 16),
                 child: Text(
