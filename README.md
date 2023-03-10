@@ -1,5 +1,8 @@
 # app
 
+https://pub.dev/packages/dart_openai
+
+
 A new Flutter project.
 
 ## Getting Started
