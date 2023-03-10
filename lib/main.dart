@@ -26,7 +26,7 @@ class ChatGPTAnswer extends StatefulWidget {
 
 class _ChatGPTAnswerState extends State<ChatGPTAnswer> {
   late TextEditingController _controller;
-  String _prompt = '';
+  String _prompt = ' ';
 
   /// `initState()` is a function that is called when the widget is first created.
   ///
@@ -50,15 +50,17 @@ class _ChatGPTAnswerState extends State<ChatGPTAnswer> {
   ///   A string of text.
 
   Future<String> _generateTextFromChatGPTAPI(String gptPrompt) async {
-    OpenAI.apiKey = "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";
+    OpenAI.apiKey = "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";
 
+    if(gptPrompt != ' '){
     final completion = await OpenAI.instance.completion.create(
       model: "text-davinci-003",
       prompt: gptPrompt,
       maxTokens: 50,
     );
-
     return (completion.choices[0].text);
+    }
+ return ("Write your awnsers here");
   }
 
   /// It takes a string as input, and returns a string as output
