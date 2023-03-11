@@ -1,13 +1,24 @@
+/// Importing the packages that are needed for the app to run.
 import 'package:flutter/material.dart';
 import 'package:dart_openai/openai.dart';
 
 void main() => runApp(const MyApp());
 
+/// This class is a StatelessWidget that returns a MaterialApp with a title and a home page
 class MyApp extends StatelessWidget {
+  /// A constructor that is called when the widget is first created.
   const MyApp({Key? key}) : super(key: key);
 
+  /// A variable that is called when the widget is first created.
   static const String _title = 'Flutter Code Sample';
 
+  /// The build function returns a MaterialApp widget that contains a ChatGPTAnswer widget
+  ///
+  /// Args:
+  ///   context (BuildContext): The context of the widget.
+  ///
+  /// Returns:
+  ///   A MaterialApp widget.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,14 +28,18 @@ class MyApp extends StatelessWidget {
   }
 }
 
+/// `ChatGPTAnswer` is a `StatefulWidget` that creates a `_ChatGPTAnswerState`
 class ChatGPTAnswer extends StatefulWidget {
+  /// A constructor that is called when the widget is first created.
   const ChatGPTAnswer({Key? key}) : super(key: key);
 
+  /// `createState()` is a function that returns a State object
   @override
   State<ChatGPTAnswer> createState() => _ChatGPTAnswerState();
 }
 
 class _ChatGPTAnswerState extends State<ChatGPTAnswer> {
+  /// Creating a text editing controller and a string.
   late TextEditingController _controller;
   String _prompt = ' ';
 
@@ -49,9 +64,11 @@ class _ChatGPTAnswerState extends State<ChatGPTAnswer> {
   /// Returns:
   ///   A string of text.
   Future<String> _generateTextFromChatGPTAPI(String gptPrompt) async {
-    String API_KEY = "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";
+    /// This is where you put your API key.
+    String API_KEY = " ";
     OpenAI.apiKey = API_KEY;
 
+    /// Checking if the prompt is empty. If it is not empty, it will return the text.
     if (gptPrompt != ' ') {
       final completion = await OpenAI.instance.completion.create(
         model: "text-davinci-003",
@@ -83,22 +100,37 @@ My first suggestion request is “$gptPrompt”.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /// Creating the app bar.
+      /// Setting the background color of the app to a dark grey.
       backgroundColor: Color.fromARGB(255, 45, 45, 45),
+
+      /// The above code is creating a text field and a button. When the button is pressed, the text field is
+      /// cleared and the text is sent to the API. The API then returns a response.
       body: Column(
+        /// Setting the space between the text field and the button.
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+        /// Aligning the text to the center.
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           /// Creating a text field.
           Center(
             child: Padding(
               padding: const EdgeInsets.all(24.0),
-              child: Text("DoctorAI",
-                  textScaleFactor: 2, style: TextStyle(color: Colors.white)),
+              child: Text(
+                "DoctorAI",
+                textScaleFactor: 2,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0, // Increase the font size
+                  fontWeight: FontWeight.bold, // Add bold font weight
+                  fontStyle: FontStyle.italic, // Add italic font style
+                ),
+              ),
             ),
           ),
 
           Expanded(
+            /// The above code is using the FutureBuilder widget to display the data from the API.
             child: FutureBuilder<String>(
               future: _generateTextFromChatGPTAPI(_prompt),
               builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
@@ -163,6 +195,8 @@ My first suggestion request is “$gptPrompt”.
                     ),
                   ];
                 }
+
+                /// Returning the data.
                 return Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -175,29 +209,29 @@ My first suggestion request is “$gptPrompt”.
             /// Returning the data.
           ),
           Container(
-            padding: const EdgeInsets.all(16.0),
-            color: Color.fromARGB(255, 45, 45, 45),
-            child: TextField(
-              controller: _controller,
-              decoration: const InputDecoration(
-                labelText: 'How are you feeling?',
-                labelStyle:
-                    TextStyle(color: Color.fromARGB(255, 116, 116, 114)),
-                    floatingLabelAlignment: FloatingLabelAlignment.center,
-                border: OutlineInputBorder(),
-              ),
-
-              /// Setting the value of the text field to the value of the string.
-              onSubmitted: (String value) {
-                setState(() {
-                  _prompt = value;
-                });
-              },
-            ),
-          ),
+              padding: const EdgeInsets.all(16.0),
+              color: Color.fromARGB(255, 45, 45, 45),
+              child: TextField(
+                controller: _controller,
+                decoration: const InputDecoration(
+                  labelText: 'How are you feeling?',
+                  labelStyle: TextStyle(
+                    color: Color.fromARGB(
+                        255, 255, 255, 255), // Change the color here
+                    fontSize:
+                        16.0, // You can also set other properties of the text style
+                  ),
+                  floatingLabelAlignment: FloatingLabelAlignment.center,
+                  border: OutlineInputBorder(),
+                ),
+                onSubmitted: (String value) {
+                  setState(() {
+                    _prompt = value;
+                  });
+                },
+              )),
         ],
       ),
     );
   }
 }
-
