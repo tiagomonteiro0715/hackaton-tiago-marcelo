@@ -76,14 +76,12 @@ My first suggestion request is “$gptPrompt”.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-
       /// Setting the background color of the app to a dark grey.
       backgroundColor: Color.fromARGB(255, 45, 45, 45),
 
       /// The above code is creating a text field and a button. When the button is pressed, the text field is
       /// cleared and the text is sent to the API. The API then returns a response.
-      
+
       body: Column(
         /// Setting the space between the text field and the button.
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -98,11 +96,12 @@ My first suggestion request is “$gptPrompt”.
               padding: const EdgeInsets.all(24.0),
               child: Text(
                 "DoctorAI chat bot",
-                textScaleFactor: 2,
+                textScaleFactor: 1.0,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20.0, // Increase the font size
-                  fontWeight: FontWeight.bold, // Add bold font weight
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "Montserrat",
                 ),
               ),
             ),

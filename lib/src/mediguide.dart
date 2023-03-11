@@ -69,8 +69,7 @@ My first suggestion request is “$gptPrompt”.
       return (completion.choices[0].text);
     }
 
-
-     return ("""
+    return ("""
       What is mediguide?
       \nChat bot using chatGPT API for explaining diseases, medical consecepts and other medical related topics
       \nHere to help people understand their health concerns
@@ -90,14 +89,12 @@ My first suggestion request is “$gptPrompt”.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-
       /// Setting the background color of the app to a dark grey.
       backgroundColor: Color.fromARGB(255, 45, 45, 45),
 
       /// The above code is creating a text field and a button. When the button is pressed, the text field is
       /// cleared and the text is sent to the API. The API then returns a response.
-      
+
       body: Column(
         /// Setting the space between the text field and the button.
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -107,21 +104,22 @@ My first suggestion request is “$gptPrompt”.
 
         children: [
           /// Creating a text field.
+
           Center(
             child: Padding(
               padding: const EdgeInsets.all(24.0),
               child: Text(
-                " MediGuide chat bot",
-                textScaleFactor: 2,
+                "MediGuide chat bot",
+                textScaleFactor: 1.0,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20.0, // Increase the font size
-                  fontWeight: FontWeight.bold, // Add bold font weight
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "Montserrat",
                 ),
               ),
             ),
           ),
-
           Expanded(
             /// The above code is using the FutureBuilder widget to display the data from the API.
             child: FutureBuilder<String>(
