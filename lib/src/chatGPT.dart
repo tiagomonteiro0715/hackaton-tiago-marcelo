@@ -103,7 +103,6 @@ My first suggestion request is “$gptPrompt”.
                   color: Colors.white,
                   fontSize: 20.0, // Increase the font size
                   fontWeight: FontWeight.bold, // Add bold font weight
-                  fontStyle: FontStyle.italic, // Add italic font style
                 ),
               ),
             ),

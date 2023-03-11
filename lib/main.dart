@@ -107,15 +107,23 @@ class _NavigationRailPageState extends State<NavigationRailPage> {
                 });
               },
               extended: isLargeScreen,
-              destinations: _navBarItems
-                  .map((item) => NavigationRailDestination(
-                      icon: item.icon,
-                      selectedIcon: item.activeIcon,
-                      label: Text(
-                        item.label!,
-                        selectionColor: Colors.white,
-                      )))
-                  .toList(),
+destinations: _navBarItems
+    .map((item) => NavigationRailDestination(
+        icon: IconTheme(
+          data: IconThemeData(color: Colors.white),
+          child: item.icon,
+        ),
+        selectedIcon: IconTheme(
+          data: IconThemeData(color: Colors.white),
+          child: item.activeIcon,
+        ),
+        label: Text(
+          item.label!,
+          style: TextStyle(color: Colors.white),
+        ),
+    ))
+    .toList(),
+
             ),
           const VerticalDivider(thickness: 1, width: 1),
 

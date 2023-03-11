@@ -111,13 +111,12 @@ My first suggestion request is “$gptPrompt”.
             child: Padding(
               padding: const EdgeInsets.all(24.0),
               child: Text(
-                " MediGuide chatbot",
+                " MediGuide chat bot",
                 textScaleFactor: 2,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0, // Increase the font size
                   fontWeight: FontWeight.bold, // Add bold font weight
-                  fontStyle: FontStyle.italic, // Add italic font style
                 ),
               ),
             ),
