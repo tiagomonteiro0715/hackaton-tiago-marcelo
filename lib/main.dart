@@ -51,11 +51,6 @@ const _navBarItems = [
     label: 'Mediguide',
   ),
   BottomNavigationBarItem(
-    icon: Icon(Icons.bookmark_border_outlined),
-    activeIcon: Icon(Icons.bookmark_rounded),
-    label: 'Historic',
-  ),
-  BottomNavigationBarItem(
     icon: Icon(Icons.person_outline_rounded),
     activeIcon: Icon(Icons.person_rounded),
     label: 'Profile',
@@ -143,10 +138,10 @@ class _NavigationRailPageState extends State<NavigationRailPage> {
                 switch (_navBarItems[_selectedIndex].label) {
                   case "DoctorAI":
                     return ChatGPTAnswer();
-                  case "Profile":
-                    return ProfilePage1();
                   case "Mediguide":
                     return MediGuideChatBot();
+                  case "Profile":
+                    return ProfilePage1();
                   default:
                     return Text("${_navBarItems[_selectedIndex].label} Page");
                 }

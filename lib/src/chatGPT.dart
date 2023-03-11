@@ -126,7 +126,8 @@ My first suggestion request is “$gptPrompt”.
                         padding: EdgeInsets.all(
                             14.0), // add some padding to the container
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 255, 255, 255), // set the background color to grey
+                          color: Color.fromARGB(255, 255, 255,
+                              255), // set the background color to grey
                           borderRadius: BorderRadius.circular(
                               20.0), // set the border radius to 10
                           boxShadow: [
@@ -139,7 +140,8 @@ My first suggestion request is “$gptPrompt”.
                         child: Text(
                           '${snapshot.data}',
                           style: const TextStyle(
-                              fontSize: 16.0, color: Color.fromARGB(255, 0, 0, 0)),
+                              fontSize: 16.0,
+                              color: Color.fromARGB(255, 0, 0, 0)),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -192,27 +194,27 @@ My first suggestion request is “$gptPrompt”.
             /// Returning the data.
           ),
           Container(
-              padding: const EdgeInsets.all(16.0),
-              color: Color.fromARGB(255, 244, 243, 243),
-              child: TextField(
-                controller: _controller,
-                decoration: const InputDecoration(
-                  labelText: 'How are you feeling?',
-                  labelStyle: TextStyle(
-                    
-                    color: Color.fromARGB(255, 0, 0, 0), // Change the color here
-                    fontSize:
-                        16.0, // You can also set other properties of the text style
-                  ),
-                  floatingLabelAlignment: FloatingLabelAlignment.center,
-                  border: OutlineInputBorder(),
+            padding: const EdgeInsets.all(16.0),
+            color: Color.fromARGB(255, 244, 243, 243),
+            child: TextField(
+              controller: _controller,
+              decoration: const InputDecoration(
+                labelText: 'How are you feeling?',
+                labelStyle: TextStyle(
+                  color: Color.fromARGB(255, 0, 0, 0), // Change the color here
+                  fontSize:
+                      16.0, // You can also set other properties of the text style
                 ),
-                onSubmitted: (String value) {
-                  setState(() {
-                    _prompt = value;
-                  });
-                },
-              )),
+                floatingLabelAlignment: FloatingLabelAlignment.center,
+                border: OutlineInputBorder(),
+              ),
+              onSubmitted: (String value) {
+                setState(() {
+                  _prompt = value;
+                });
+              },
+            ),
+          ),
         ],
       ),
     );
