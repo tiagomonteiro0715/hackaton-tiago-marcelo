@@ -1,26 +1,3 @@
-# app
-
-https://pub.dev/packages/dart_openai
-
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
----------------------------------------------------------------------------------------------------------
-
-
 ## Project Description
 
 ### What your application does?
@@ -74,7 +51,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat fringil
 
 #### How to Install and Run the Project
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat fringilla eros nec mattis. Cras nec sagittis risus, vel mattis odio. Sed erat massa, commodo nec rutrum ac, tincidunt quis magna. Pellentesque non tristique ante. Phasellus convallis ante tincidunt lacus tempor aliquam. Donec quis ipsum laoreet, pretium ligula quis, pulvinar ante. Nam fringilla nunc in accumsan tempus. 
+
+'''
+
+flutter pub add dart_openai
+
+'''
+
+https://pub.dev/packages/dart_openai
+
 
 </a>
 
