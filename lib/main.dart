@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+/// `NavigationRailPage` is a `StatefulWidget` that creates a `_NavigationRailPageState` state object
 class NavigationRailPage extends StatefulWidget {
   const NavigationRailPage({Key? key}) : super(key: key);
 
@@ -37,15 +38,14 @@ class NavigationRailPage extends StatefulWidget {
   State<NavigationRailPage> createState() => _NavigationRailPageState();
 }
 
-//ChatGPTAnswer();
-
+/// Creating a list of BottomNavigationBarItems.
 const _navBarItems = [
   BottomNavigationBarItem(
     icon: Icon(Icons.home_outlined),
     activeIcon: Icon(Icons.home_rounded),
     label: 'DoctorAI',
   ),
-    BottomNavigationBarItem(
+  BottomNavigationBarItem(
     icon: Icon(Icons.bookmark_border_outlined),
     activeIcon: Icon(Icons.bookmark_rounded),
     label: 'Mediguide',
@@ -62,15 +62,28 @@ const _navBarItems = [
   ),
 ];
 
+/*
+It defines a stateful widget called _NavigationRailPageState.
+The widget renders a navigation bar with different items representing pages.
+When the user clicks on an item, the corresponding page is displayed on the screen.
+The navigation bar is either a BottomNavigationBar or a NavigationRail depending on the screen size.
+The _selectedIndex variable is updated when the user clicks on a navigation item.
+The body property of the Scaffold widget contains a Row widget that holds the NavigationRail or BottomNavigationBar and the main content of the page.
+The main content is displayed in an Expanded widget, which expands to fill the remaining space in the row after the NavigationRail or BottomNavigationBar has been rendered.
+*/
 class _NavigationRailPageState extends State<NavigationRailPage> {
+  /// Setting the default page to the first page in the list.
   int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    /// Checking the size of the screen and setting the screen size to a variable.
     final width = MediaQuery.of(context).size.width;
     final bool isSmallScreen = width < 600;
     final bool isLargeScreen = width > 800;
 
+    /// Returning a Scaffold widget that contains a BottomNavigationBar or a NavigationRail and a Row
+    /// widget.
     return Scaffold(
       bottomNavigationBar: isSmallScreen
           ? BottomNavigationBar(
@@ -87,7 +100,7 @@ class _NavigationRailPageState extends State<NavigationRailPage> {
           if (!isSmallScreen)
             NavigationRail(
               selectedIndex: _selectedIndex,
-              //backgroundColor: Colors.black,//Mudar outras cores para ficar tudo bem
+              backgroundColor: Color.fromARGB(255, 28, 28, 28),
               onDestinationSelected: (int index) {
                 setState(() {
                   _selectedIndex = index;
@@ -100,20 +113,30 @@ class _NavigationRailPageState extends State<NavigationRailPage> {
                       selectedIcon: item.activeIcon,
                       label: Text(
                         item.label!,
+                        selectionColor: Colors.white,
                       )))
                   .toList(),
             ),
           const VerticalDivider(thickness: 1, width: 1),
-          // This is the main content.
+
+          /// A switch statement that returns a widget depending on the label of the selected item in the
+          /// navigation bar.
           Expanded(
             child: Center(
-              child: _navBarItems[_selectedIndex].label == "DoctorAI"
-                  ? ChatGPTAnswer()
-                  : _navBarItems[_selectedIndex].label == "Profile"
-                      ? ProfilePage1()
-                  : _navBarItems[_selectedIndex].label == "Mediguide"
-                      ? MediGuideChatBot()
-                        : Text("${_navBarItems[_selectedIndex].label} Page"),
+              child: (() {
+                /// A switch statement that returns a widget depending on the label of the selected item in the
+                /// /// navigation bar.
+                switch (_navBarItems[_selectedIndex].label) {
+                  case "DoctorAI":
+                    return ChatGPTAnswer();
+                  case "Profile":
+                    return ProfilePage1();
+                  case "Mediguide":
+                    return MediGuideChatBot();
+                  default:
+                    return Text("${_navBarItems[_selectedIndex].label} Page");
+                }
+              })(),
             ),
           )
         ],
