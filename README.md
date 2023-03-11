@@ -2,7 +2,7 @@
 
 ### What your application does?
 
-Two chat bots powered by ChatGPT API aid doctors and patients with faster, better diagnostics, increasing health and happiness
+Two chat bots powered by ChatGPT API aid doctors and patients with faster, better diagnostics, based on chatGPT-3 training data
 
 Developed mainly with ChatGPT API and Flutter
  
