@@ -48,7 +48,6 @@ class _ChatGPTAnswerState extends State<ChatGPTAnswer> {
   ///
   /// Returns:
   ///   A string of text.
-
   Future<String> _generateTextFromChatGPTAPI(String gptPrompt) async {
     String API_KEY = "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";
     OpenAI.apiKey = API_KEY;
@@ -57,17 +56,11 @@ class _ChatGPTAnswerState extends State<ChatGPTAnswer> {
       final completion = await OpenAI.instance.completion.create(
         model: "text-davinci-003",
         prompt: """
-
 I want you to act as a doctor and come up with creative treatments for illnesses or diseases. 
-
 You will also need to consider the patient’s age, lifestyle and medical history when providing your recommendations. 
-
 Only anwer in bullet points within the categories: conventional medicines, herbal remedies and other natural alternatives. 
-
 Do not surpass 200 tokens
-
 My first suggestion request is “$gptPrompt”.
-
 """,
         maxTokens: 10,
       );
@@ -92,16 +85,19 @@ My first suggestion request is “$gptPrompt”.
     return Scaffold(
       /// Creating the app bar.
       backgroundColor: Color.fromARGB(255, 45, 45, 45),
-      appBar: AppBar(
-        title: const Text('Chat with GPT'),
-      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           /// Creating a text field.
-          Text("DoctorAI",
-              textScaleFactor: 2, style: TextStyle(color: Colors.white)),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Text("DoctorAI",
+                  textScaleFactor: 2, style: TextStyle(color: Colors.white)),
+            ),
+          ),
+
           Expanded(
             child: FutureBuilder<String>(
               future: _generateTextFromChatGPTAPI(_prompt),
@@ -112,15 +108,16 @@ My first suggestion request is “$gptPrompt”.
                 if (snapshot.hasData) {
                   children = <Widget>[
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(4.0),
                       child: Container(
+                        alignment: Alignment.center,
                         width: 1000,
-                        height: 350,
+                        height: 500,
                         padding: EdgeInsets.all(
                             14.0), // add some padding to the container
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 111, 111,
-                              111), // set the background color to grey
+                          color: Color.fromARGB(255, 64, 64,
+                              63), // set the background color to grey
                           borderRadius: BorderRadius.circular(
                               20.0), // set the border radius to 10
                         ),
@@ -179,13 +176,15 @@ My first suggestion request is “$gptPrompt”.
           ),
           Container(
             padding: const EdgeInsets.all(16.0),
-            color: Colors.white,
+            color: Color.fromARGB(255, 45, 45, 45),
             child: TextField(
               controller: _controller,
               decoration: const InputDecoration(
-                hintText: 'Enter your message',
+                labelText: 'How are you feeling?',
+                labelStyle:
+                    TextStyle(color: Color.fromARGB(255, 116, 116, 114)),
+                    floatingLabelAlignment: FloatingLabelAlignment.center,
                 border: OutlineInputBorder(),
-                fillColor: Colors.grey,
               ),
 
               /// Setting the value of the text field to the value of the string.
@@ -201,3 +200,4 @@ My first suggestion request is “$gptPrompt”.
     );
   }
 }
+
