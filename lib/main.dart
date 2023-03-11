@@ -1,8 +1,8 @@
 /// Importing the packages that are needed for the app to run.
 import 'package:flutter/material.dart';
-import 'package:app/src/chatGPT.dart';
-import 'package:app/src/profile.dart';
-import 'package:app/src/mediguide.dart';
+import 'package:apptiago/src/chatGPT.dart';
+import 'package:apptiago/src/profile.dart';
+import 'package:apptiago/src/mediguide.dart';
 
 void main() => runApp(const MyApp());
 
@@ -90,40 +90,46 @@ class _NavigationRailPageState extends State<NavigationRailPage> {
               items: _navBarItems,
               currentIndex: _selectedIndex,
               onTap: (int index) {
-                setState(() {
-                  _selectedIndex = index;
-                });
-              })
+                setState(
+                  () {
+                    _selectedIndex = index;
+                  },
+                );
+              },
+            )
           : null,
       body: Row(
         children: <Widget>[
           if (!isSmallScreen)
             NavigationRail(
               selectedIndex: _selectedIndex,
-              backgroundColor: Color.fromARGB(255, 28, 28, 28),
+              backgroundColor: Color.fromARGB(255, 235, 235, 235),
               onDestinationSelected: (int index) {
-                setState(() {
-                  _selectedIndex = index;
-                });
+                setState(
+                  () {
+                    _selectedIndex = index;
+                  },
+                );
               },
               extended: isLargeScreen,
-destinations: _navBarItems
-    .map((item) => NavigationRailDestination(
-        icon: IconTheme(
-          data: IconThemeData(color: Colors.white),
-          child: item.icon,
-        ),
-        selectedIcon: IconTheme(
-          data: IconThemeData(color: Colors.white),
-          child: item.activeIcon,
-        ),
-        label: Text(
-          item.label!,
-          style: TextStyle(color: Colors.white),
-        ),
-    ))
-    .toList(),
-
+              destinations: _navBarItems
+                  .map(
+                    (item) => NavigationRailDestination(
+                      icon: IconTheme(
+                        data: IconThemeData(color: Color.fromARGB(255, 0, 0, 0)),
+                        child: item.icon,
+                      ),
+                      selectedIcon: IconTheme(
+                        data: IconThemeData(color: Color.fromARGB(255, 0, 0, 0)),
+                        child: item.activeIcon,
+                      ),
+                      label: Text(
+                        item.label!,
+                        style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                      ),
+                    ),
+                  )
+                  .toList(),
             ),
           const VerticalDivider(thickness: 1, width: 1),
 

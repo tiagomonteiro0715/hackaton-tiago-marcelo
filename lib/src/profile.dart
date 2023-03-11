@@ -8,39 +8,73 @@ class ProfilePage1 extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          const Expanded(flex: 2, child: _TopPortion()),
+          const Expanded(flex: 1, child: _TopPortion()),
           Expanded(
             flex: 3,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
                   Text(
-                    "first last",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline6
-                        ?.copyWith(fontWeight: FontWeight.bold),
+                    "Full Name",
+                    textScaleFactor: 1.5,
+                    style: TextStyle(color: Colors.black),
                   ),
                   const SizedBox(height: 16),
-                  Row(
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      FloatingActionButton.extended(
-                        onPressed: () {},
-                        heroTag: 'follow',
-                        elevation: 0,
-                        label: const Text("Follow"),
-                        icon: const Icon(Icons.person_add_alt_1),
+                      Container(
+                        height: 100,
+                        width: 700,
+                        child: Text(""),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromARGB(255, 238, 235, 235),
+                                blurRadius: 10,
+                                offset: Offset(0, -5),
+                              ),
+                            ]),
                       ),
-                      const SizedBox(width: 16.0),
-                      FloatingActionButton.extended(
-                        onPressed: () {},
-                        heroTag: 'mesage',
-                        elevation: 0,
-                        backgroundColor: Colors.red,
-                        label: const Text("Message"),
-                        icon: const Icon(Icons.message_rounded),
+                      SizedBox(
+                        height: 32,
+                      ),
+                      Container(
+                        height: 100,
+                        width: 700,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color.fromARGB(255, 238, 235, 235),
+                              blurRadius: 10,
+                              offset: Offset(0, -5),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 32,
+                      ),
+                      Container(
+                        height: 100,
+                        width: 700,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color.fromARGB(255, 238, 235, 235),
+                              blurRadius: 10,
+                              offset: Offset(0, -5),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -52,6 +86,7 @@ class ProfilePage1 extends StatelessWidget {
           ),
         ],
       ),
+      backgroundColor: Color.fromARGB(255, 238, 235, 235),
     );
   }
 }
@@ -108,7 +143,10 @@ class _TopPortion extends StatelessWidget {
               gradient: LinearGradient(
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
-                  colors: [Color.fromARGB(255, 24, 24, 24), Color.fromARGB(255, 53, 53, 54)]),
+                  colors: [
+                    Color.fromARGB(255, 238, 235, 235),
+                    Colors.white,
+                  ]),
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(50),
                 bottomRight: Radius.circular(50),
@@ -123,16 +161,17 @@ class _TopPortion extends StatelessWidget {
               fit: StackFit.expand,
               children: [
                 Container(
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Colors.black,
                     shape: BoxShape.circle,
+                    border: Border.all(
+                        width: 3, color: Color.fromARGB(255, 211, 211, 211)),
                     image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(
-                            'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')),
+                            'https://pbs.twimg.com/media/EykTF5RXEAAAt0H.jpg:large')),
                   ),
                 ),
-
               ],
             ),
           ),

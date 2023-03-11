@@ -90,7 +90,7 @@ My first suggestion request is “$gptPrompt”.
   Widget build(BuildContext context) {
     return Scaffold(
       /// Setting the background color of the app to a dark grey.
-      backgroundColor: Color.fromARGB(255, 45, 45, 45),
+      backgroundColor: Color.fromARGB(255, 244, 243, 243),
 
       /// The above code is creating a text field and a button. When the button is pressed, the text field is
       /// cleared and the text is sent to the API. The API then returns a response.
@@ -112,7 +112,7 @@ My first suggestion request is “$gptPrompt”.
                 "MediGuide chat bot",
                 textScaleFactor: 1.0,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 30.0,
                   fontWeight: FontWeight.bold,
                   fontFamily: "Montserrat",
@@ -139,15 +139,21 @@ My first suggestion request is “$gptPrompt”.
                         padding: EdgeInsets.all(
                             14.0), // add some padding to the container
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 64, 64,
-                              63), // set the background color to grey
+                          color: Color.fromARGB(255, 255, 255,
+                              255), // set the background color to grey
                           borderRadius: BorderRadius.circular(
                               20.0), // set the border radius to 10
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color.fromARGB(255, 180, 175, 175),
+                              blurRadius: 5,
+                            ),
+                          ],
                         ),
                         child: Text(
                           '${snapshot.data}',
                           style: const TextStyle(
-                              fontSize: 16.0, color: Colors.white),
+                              fontSize: 16.0, color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -181,7 +187,7 @@ My first suggestion request is “$gptPrompt”.
                       padding: EdgeInsets.all(16.0),
                       child: Text(
                         'Type a message to start chatting',
-                        style: TextStyle(fontSize: 20.0, color: Colors.white),
+                        style: TextStyle(fontSize: 20.0, color: Colors.black),
                       ),
                     ),
                   ];
@@ -201,14 +207,14 @@ My first suggestion request is “$gptPrompt”.
           ),
           Container(
               padding: const EdgeInsets.all(16.0),
-              color: Color.fromARGB(255, 45, 45, 45),
+              color: Color.fromARGB(255, 244, 243, 243),
               child: TextField(
                 controller: _controller,
                 decoration: const InputDecoration(
                   labelText: 'What are your questions?',
                   labelStyle: TextStyle(
-                    color: Color.fromARGB(
-                        255, 255, 255, 255), // Change the color here
+                    color:
+                        Color.fromARGB(255, 0, 0, 0), // Change the color here
                     fontSize:
                         16.0, // You can also set other properties of the text style
                   ),
