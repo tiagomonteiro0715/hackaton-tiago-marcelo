@@ -1,4 +1,6 @@
-## Project Description
+## Doctor AI
+
+![doctor](https://github.com/tiagomonteiro0715/doctorAI/blob/main/doctor.png)
 
 ### What your application does?
 
@@ -18,17 +20,10 @@ The ability to create apps with multiple screens and make sure they work well on
 -----
 
 
------
-
 
 # Table of Contents
-### [ Project Roadmap ](#Project_Roadmap)
 
 ### [ How to Install and Run the Project ](#How_to_install)
-
-### [ How to Use the Project ](#How_to_use)
-
-### [ How to Contribute to the Project ](#how_to_contribute)
 
 ### [ Include Credits, Authors and acknowledgment for contributions ](#credits)
 
@@ -38,48 +33,42 @@ The ability to create apps with multiple screens and make sure they work well on
 
 
 
-<a name="Project_Roadmap">
-
-#### Project Roadmap
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat fringilla eros nec mattis. Cras nec sagittis risus, vel mattis odio. Sed erat massa, commodo nec rutrum ac, tincidunt quis magna. Pellentesque non tristique ante. Phasellus convallis ante tincidunt lacus tempor aliquam. Donec quis ipsum laoreet, pretium ligula quis, pulvinar ante. Nam fringilla nunc in accumsan tempus. 
-
-</a>
-
-
 <a name="How_to_install">
 
 #### How to Install and Run the Project
 
+Install flutter and its dependencies
 
-'''
+[Flutter docs](https://docs.flutter.dev/)
 
+
+Run flutter doctor to see if it is integrated with google chrome
+
+```
+.
+.
+.
+[√] Chrome - develop for the web 
+.
+.
+.
+```
+
+Create a project and install the necessary dependencies
+```
+flutter create app
+```
+
+```
 flutter pub add dart_openai
+```
 
-'''
+Package documentation: https://pub.dev/packages/dart_openai
 
-https://pub.dev/packages/dart_openai
-
-
-</a>
-
-<a name="How_to_use">
-
-
-#### How to Use the Project
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat fringilla eros nec mattis. Cras nec sagittis risus, vel mattis odio. Sed erat massa, commodo nec rutrum ac, tincidunt quis magna. Pellentesque non tristique ante. Phasellus convallis ante tincidunt lacus tempor aliquam. Donec quis ipsum laoreet, pretium ligula quis, pulvinar ante. Nam fringilla nunc in accumsan tempus. 
-
-</a>
-
-<a name="how_to_contribute">
-
-
-#### How to Contribute to the Project
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat fringilla eros nec mattis. Cras nec sagittis risus, vel mattis odio. Sed erat massa, commodo nec rutrum ac, tincidunt quis magna. Pellentesque non tristique ante. Phasellus convallis ante tincidunt lacus tempor aliquam. Donec quis ipsum laoreet, pretium ligula quis, pulvinar ante. Nam fringilla nunc in accumsan tempus. 
-
-</a>
+Switch all the packages from the create project to the repository
+```
+flutter run
+```
 
 <a name="credits">
 
