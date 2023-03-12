@@ -65,7 +65,7 @@ flutter pub add dart_openai
 
 Package documentation: https://pub.dev/packages/dart_openai
 
-Switch all the packages from the create project to the repository
+Switch all the files from `.lib` directory from the inicial project to the repository
 ```
 flutter run
 ```
