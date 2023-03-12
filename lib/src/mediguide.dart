@@ -38,7 +38,7 @@ class _MediGuideChatBotState extends State<MediGuideChatBot> {
   ///   A string of text.
   Future<String> _generateTextFromChatGPTAPI(String gptPrompt) async {
     /// This is where you put your API key.
-    String API_KEY = "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";
+    String API_KEY = "";
     OpenAI.apiKey = API_KEY;
 
     /// Checking if the prompt is empty. If it is not empty, it will return the text.
