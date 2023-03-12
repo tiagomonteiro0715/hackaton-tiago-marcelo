@@ -38,7 +38,7 @@ class _ChatGPTAnswerState extends State<ChatGPTAnswer> {
   ///   A string of text.
   Future<String> _generateTextFromChatGPTAPI(String gptPrompt) async {
     /// This is where you put your API key.
-    String API_KEY = "";
+    String API_KEY = "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";
     OpenAI.apiKey = API_KEY;
 
     /// Checking if the prompt is empty. If it is not empty, it will return the text.
@@ -46,11 +46,8 @@ class _ChatGPTAnswerState extends State<ChatGPTAnswer> {
       final completion = await OpenAI.instance.completion.create(
         model: "text-davinci-003",
         prompt: """
-I want you to act as a doctor and come up with creative treatments for illnesses or diseases. 
-You will also need to consider the patient’s age, lifestyle and medical history when providing your recommendations. 
-Only anwer in bullet points within the categories: conventional medicines, herbal remedies and other natural alternatives. 
-Do not surpass 200 tokens
-My first suggestion request is “$gptPrompt”.
+I will give you some symptoms that someone may be experiencing and I want you to give me suggestions of
+what diseases or conditions they may be suffereing from. The symptoms are: “$gptPrompt”.
 """,
         maxTokens: 250,
       );
@@ -58,10 +55,10 @@ My first suggestion request is “$gptPrompt”.
     }
     return ("""
       What is doctorAI?
-      \nChat bot using chatGPT API for illness treatment recommendations
-      \nConsiders age, lifestyle, and medical history when giving recommendations
-      \nProvide answers in three categories: traditional medicine, herbal remedies, and natural alternatives
+      \nA Chat bot that uses chatGPT API to give possible a diagnosis based on symptoms typed in the input text field.
+      \n
      \n\nNOTICE
+     \nThe answers given by DoctorAI are in NO way definitive, and you should consult with a doctor before taking any decisions.
     \nPossible bias and harmful content may be produced due to limitations in training data and language patterns
     \nLimited knowledge of world events beyond 2021 and specialized subjects may require fact-checking and awareness of my limitations""");
   }
@@ -95,7 +92,7 @@ My first suggestion request is “$gptPrompt”.
             child: Padding(
               padding: const EdgeInsets.all(24.0),
               child: Text(
-                "DoctorAI chat bot",
+                "DoctorAI",
                 textScaleFactor: 1.0,
                 style: TextStyle(
                   color: Color.fromARGB(255, 0, 0, 0),

@@ -38,7 +38,7 @@ class _MediGuideChatBotState extends State<MediGuideChatBot> {
   ///   A string of text.
   Future<String> _generateTextFromChatGPTAPI(String gptPrompt) async {
     /// This is where you put your API key.
-    String API_KEY = "";
+    String API_KEY = "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";
     OpenAI.apiKey = API_KEY;
 
     /// Checking if the prompt is empty. If it is not empty, it will return the text.
@@ -46,23 +46,7 @@ class _MediGuideChatBotState extends State<MediGuideChatBot> {
       final completion = await OpenAI.instance.completion.create(
         model: "text-davinci-003",
         prompt: """
-You are a chatbot programmed to function as a doctor, but your main task is to 
-explain medical concepts and diseases to people seeking information. 
-Your goal is to help people understand medical jargon and terminology, 
-as well as to provide clear explanations of various health conditions. 
-You are equipped with vast medical knowledge and the ability to communicate 
-complex ideas in a clear and concise manner. Whether it's explaining the symptoms 
-of a common cold or the treatment options for a chronic illness, you are here to help 
-people understand their health concerns. Your ultimate goal is to empower people to take 
-an active role in their healthcare by providing them with the information they 
-need to make informed decisions about their health.
-
-
-Do not surpass 200 tokens
-
-Explain in bullet points
-
-My first suggestion request is “$gptPrompt”.
+I want you to explain and give me information about the disease $gptPrompt and suggest possible treatment methods. Do it in short sentences and with bullet points separated by new line.
 """,
         maxTokens: 250,
       );
@@ -70,13 +54,13 @@ My first suggestion request is “$gptPrompt”.
     }
 
     return ("""
-      What is mediguide?
-      \nChat bot using chatGPT API for explaining diseases, medical consecepts and other medical related topics
-      \nHere to help people understand their health concerns
-      \nHelp people be more involved in their healthcare by giving them the information they need to make good decisions about their health
+      What is Mediguide?
+      \nA Chat bot using chatGPT API used to provide information about diseases and conditions.
+      \nHere to help people understand their health concerns.
      \n\nNOTICE
-    \nPossible bias and harmful content may be produced due to limitations in training data and language patterns
-    \nLimited knowledge of world events beyond 2021 and specialized subjects may require fact-checking and awareness of my limitations""");
+     \nThe information given by Mediguide shoul not be definitive. Further reasearch is recommended.
+    \nPossible bias and harmful content may be produced due to limitations in training data and language patterns.
+    \nLimited knowledge of world events beyond 2021 and specialized subjects may require fact-checking and awareness of my limitations.""");
   }
 
   /// It takes a string as input, and returns a string as output
@@ -109,7 +93,7 @@ My first suggestion request is “$gptPrompt”.
             child: Padding(
               padding: const EdgeInsets.all(24.0),
               child: Text(
-                "MediGuide chat bot",
+                "MediGuide",
                 textScaleFactor: 1.0,
                 style: TextStyle(
                   color: Colors.black,
