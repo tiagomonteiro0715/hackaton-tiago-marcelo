@@ -7,7 +7,9 @@
 Two chat bots powered by ChatGPT API aid doctors and patients with faster, better diagnostics, based on chatGPT-3 training data
 
 Developed mainly with ChatGPT API and Flutter
- 
+
+This is an hackathon project
+
 ### Why you used the technologies you used?
 
 Easy to use, learn, and maintain. Also, extensively documented
