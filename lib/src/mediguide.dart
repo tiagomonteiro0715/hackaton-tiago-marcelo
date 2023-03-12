@@ -38,7 +38,7 @@ class _MediGuideChatBotState extends State<MediGuideChatBot> {
   ///   A string of text.
   Future<String> _generateTextFromChatGPTAPI(String gptPrompt) async {
     /// This is where you put your API key.
-    String API_KEY = " ";
+    String API_KEY = "";
     OpenAI.apiKey = API_KEY;
 
     /// Checking if the prompt is empty. If it is not empty, it will return the text.
@@ -64,7 +64,7 @@ Explain in bullet points
 
 My first suggestion request is “$gptPrompt”.
 """,
-        maxTokens: 10,
+        maxTokens: 250,
       );
       return (completion.choices[0].text);
     }
@@ -120,87 +120,90 @@ My first suggestion request is “$gptPrompt”.
               ),
             ),
           ),
+          
           Expanded(
             /// The above code is using the FutureBuilder widget to display the data from the API.
-            child: FutureBuilder<String>(
-              future: _generateTextFromChatGPTAPI(_prompt),
-              builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-                List<Widget> children;
-
-                /// Checking if the snapshot has data. If it does, it will return the data.
-                if (snapshot.hasData) {
-                  children = <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Container(
-                        alignment: Alignment.center,
-                        width: 1000,
-                        height: 500,
-                        padding: EdgeInsets.all(
-                            14.0), // add some padding to the container
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 255, 255,
-                              255), // set the background color to grey
-                          borderRadius: BorderRadius.circular(
-                              20.0), // set the border radius to 10
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 180, 175, 175),
-                              blurRadius: 5,
-                            ),
-                          ],
+            child: SingleChildScrollView(
+              child: FutureBuilder<String>(
+                future: _generateTextFromChatGPTAPI(_prompt),
+                builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+                  List<Widget> children;
+            
+                  /// Checking if the snapshot has data. If it does, it will return the data.
+                  if (snapshot.hasData) {
+                    children = <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Container(
+                          alignment: Alignment.center,
+                          width: 1000,
+                          height: 500,
+                          padding: EdgeInsets.all(
+                              14.0), // add some padding to the container
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 255, 255,
+                                255), // set the background color to grey
+                            borderRadius: BorderRadius.circular(
+                                20.0), // set the border radius to 10
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromARGB(255, 180, 175, 175),
+                                blurRadius: 5,
+                              ),
+                            ],
+                          ),
+                          child: Text(
+                            '${snapshot.data}',
+                            style: const TextStyle(
+                                fontSize: 16.0, color: Colors.black),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
+                      ),
+                    ];
+                  }
+            
+                  /// If the data is loading, show a progress indicator. If the data is done loading,
+                  /// show the data. If the data failed to load, show an error message
+                  ///
+                  /// Args:
+                  ///    (snapshot):
+                  else if (snapshot.hasError) {
+                    children = <Widget>[
+                      const Icon(
+                        Icons.error_outline,
+                        color: Colors.red,
+                        size: 60,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 16),
+                        child: Text('Error: ${snapshot.error}'),
+                      ),
+                    ];
+                  }
+            
+                  /// Showing the text "Type a message to start chatting" if the data is not loading.
+                  else {
+                    children = const <Widget>[
+                      Padding(
+                        padding: EdgeInsets.all(16.0),
                         child: Text(
-                          '${snapshot.data}',
-                          style: const TextStyle(
-                              fontSize: 16.0, color: Colors.black),
-                          textAlign: TextAlign.center,
+                          'Type a message to start chatting',
+                          style: TextStyle(fontSize: 20.0, color: Colors.black),
                         ),
                       ),
+                    ];
+                  }
+            
+                  /// Returning the data.
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: children,
                     ),
-                  ];
-                }
-
-                /// If the data is loading, show a progress indicator. If the data is done loading,
-                /// show the data. If the data failed to load, show an error message
-                ///
-                /// Args:
-                ///    (snapshot):
-                else if (snapshot.hasError) {
-                  children = <Widget>[
-                    const Icon(
-                      Icons.error_outline,
-                      color: Colors.red,
-                      size: 60,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 16),
-                      child: Text('Error: ${snapshot.error}'),
-                    ),
-                  ];
-                }
-
-                /// Showing the text "Type a message to start chatting" if the data is not loading.
-                else {
-                  children = const <Widget>[
-                    Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: Text(
-                        'Type a message to start chatting',
-                        style: TextStyle(fontSize: 20.0, color: Colors.black),
-                      ),
-                    ),
-                  ];
-                }
-
-                /// Returning the data.
-                return Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: children,
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
 
             /// Returning the data.

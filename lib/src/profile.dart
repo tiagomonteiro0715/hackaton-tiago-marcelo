@@ -11,25 +11,43 @@ class ProfilePage1 extends StatelessWidget {
           const Expanded(flex: 1, child: _TopPortion()),
           Expanded(
             flex: 3,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  Text(
-                    "Full Name",
-                    textScaleFactor: 1.5,
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  const SizedBox(height: 16),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 100,
-                        width: 700,
-                        child: Text(""),
-                        decoration: BoxDecoration(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    Text(
+                      "Full Name",
+                      textScaleFactor: 1.5,
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    const SizedBox(height: 16),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 100,
+                          width: 700,
+                          child: Text(""),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color.fromARGB(255, 238, 235, 235),
+                                  blurRadius: 10,
+                                  offset: Offset(0, -5),
+                                ),
+                              ]),
+                        ),
+                        SizedBox(
+                          height: 32,
+                        ),
+                        Container(
+                          height: 100,
+                          width: 700,
+                          decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: [
@@ -38,49 +56,33 @@ class ProfilePage1 extends StatelessWidget {
                                 blurRadius: 10,
                                 offset: Offset(0, -5),
                               ),
-                            ]),
-                      ),
-                      SizedBox(
-                        height: 32,
-                      ),
-                      Container(
-                        height: 100,
-                        width: 700,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 238, 235, 235),
-                              blurRadius: 10,
-                              offset: Offset(0, -5),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 32,
-                      ),
-                      Container(
-                        height: 100,
-                        width: 700,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 238, 235, 235),
-                              blurRadius: 10,
-                              offset: Offset(0, -5),
-                            ),
-                          ],
+                        SizedBox(
+                          height: 32,
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  const _ProfileInfoRow()
-                ],
+                        Container(
+                          height: 100,
+                          width: 700,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromARGB(255, 238, 235, 235),
+                                blurRadius: 10,
+                                offset: Offset(0, -5),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    const _ProfileInfoRow()
+                  ],
+                ),
               ),
             ),
           ),
