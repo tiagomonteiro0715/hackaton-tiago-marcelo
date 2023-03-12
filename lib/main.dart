@@ -1,8 +1,8 @@
 /// Importing the packages that are needed for the app to run.
 import 'package:flutter/material.dart';
-import 'package:apptiago/src/chatGPT.dart';
-import 'package:apptiago/src/profile.dart';
-import 'package:apptiago/src/mediguide.dart';
+import 'package:app/src/chatGPT.dart';
+import 'package:app/src/profile.dart';
+import 'package:app/src/mediguide.dart';
 
 void main() => runApp(const MyApp());
 
